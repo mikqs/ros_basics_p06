@@ -10,8 +10,10 @@ from ros_basics_msgs.msg import SimpleVelocities
 
 Kp_v = 0.4
 Kp_w = 2
-Kd_v = 0.1
-Kd_w = 0.1
+Ki_v = 0.1
+Ki_w = 0.2
+Kd_v = 0.2
+Kd_w = 0.3
 dt = 0.1 #10 Hz is dt=0.1 s 
 
 def get_pose(_data):
@@ -27,6 +29,8 @@ def set_velocity(v,w):
 def spin():
     global err_distance_prev
     global err_angle_prev
+    global err_distance_sum
+    global err_angle_sum
     # 1) call the corresponding service to check if the waypoint was reached
     try:
         get_waypt_reached = rospy.ServiceProxy('check_waypoint_reached', CheckWaypointReached)
@@ -61,14 +65,17 @@ def spin():
         if (err_angle > math.pi):
             err_angle -= 2*math.pi 
 
-        err_distance_diff = (err_distance - err_distance_prev)/dt
-        err_angle_diff = (err_angle - err_angle_prev)/dt
+        err_distance_diff = (err_distance - err_distance_prev) / dt
+        err_angle_diff = (err_angle - err_angle_prev) / dt
+
+        err_distance_sum = err_distance_sum + err_distance * dt
+        err_angle_sum = err_angle_sum + err_angle * dt
 
         err_distance_prev = err_distance
         err_angle_prev = err_angle
 
-        v = Kp_v * err_distance + Kd_v * err_distance_diff
-        w = Kp_w * err_angle + Kd_w * err_angle_diff
+        v = Kp_v * err_distance + Kd_v * err_distance_diff + Ki_v * err_distance_sum
+        w = Kp_w * err_angle + Kd_w * err_angle_diff + Ki_w * err_angle_sum
 
         set_velocity(v,w)
 
