@@ -26,7 +26,7 @@ def spin():
     try:
         get_waypt_reached = rospy.ServiceProxy('check_waypoint_reached', CheckWaypointReached)
         waypt_reached = get_waypt_reached()
-        print(waypt_reached.pose)
+        print(waypt_reached)
     except rospy.ServiceException as e:
         print("Service call failed: %s"%e)
 
@@ -40,6 +40,7 @@ def spin():
         print(curr_waypt)
     except rospy.ServiceException as e:
         print("Service call failed: %s"%e)
+        
 
     # 4) implement your PID/PD/P logic
 
