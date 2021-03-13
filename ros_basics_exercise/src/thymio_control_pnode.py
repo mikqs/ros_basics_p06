@@ -54,30 +54,36 @@ def spin():
 
     #def pid_controller(train, g, K_P, K_I, K_D):
     if not curr_waypt.is_empty:
+        #Compute target
         target = curr_waypt.goal
         target_angle = math.atan2(target.y-curr_pose.xyz.y, target.x-curr_pose.xyz.x) #this will be in ]-pi;pi]
         
+        #Compute error
         err_distance = math.sqrt(((target.x - curr_pose.xyz.x)**2) + ((target.y - curr_pose.xyz.y)**2)) 
         err_angle = target_angle - curr_pose.rpy.yaw #this is now in ]-2pi;2pi[
 
-        #Normalize angle to ]-pi;pi]
+        #Normalize error angle to ]-pi;pi]
         err_angle = (err_angle + 2*math.pi) % (2*math.pi)
         if (err_angle > math.pi):
             err_angle -= 2*math.pi 
 
+        #Differential term
         err_distance_diff = (err_distance - err_distance_prev) / dt
         err_angle_diff = (err_angle - err_angle_prev) / dt
 
+        #Integral term
         err_distance_sum = err_distance_sum + err_distance * dt
         err_angle_sum = err_angle_sum + err_angle * dt
 
-        err_distance_prev = err_distance
-        err_angle_prev = err_angle
-
+        #Set control input
         v = Kp_v * err_distance + Kd_v * err_distance_diff + Ki_v * err_distance_sum
         w = Kp_w * err_angle + Kd_w * err_angle_diff + Ki_w * err_angle_sum
 
         set_velocity(v,w)
+
+        #Storing previous error
+        err_distance_prev = err_distance
+        err_angle_prev = err_angle
 
     else:
         err_distance_prev = 0
