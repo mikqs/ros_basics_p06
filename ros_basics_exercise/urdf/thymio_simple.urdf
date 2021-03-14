@@ -29,7 +29,19 @@
   <gazebo reference="sensor_right">
     <material>Gazebo/Black</material>
   </gazebo>
-  <gazebo reference="sensor_right">
+  <gazebo reference="sensor_center">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="sensor_center_right">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="sensor_center_left">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="sensor_back_right">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="sensor_back_left">
     <material>Gazebo/Black</material>
   </gazebo>
   <gazebo reference="right_wheel_link">
@@ -42,17 +54,105 @@
     <material>Gazebo/White</material>
   </gazebo>
   <!-- Sensor definitions for the simple Thymio -->
-  <gazebo reference="sensor_left">
+  <!-- Sensor center -->
+  <gazebo reference="sensor_center">
     <!-- Don't forget to add a right sensor too ! (at least) -->
-    <sensor name="laser_left" type="ray">
-      <pose>0.05 0 0 0 0 -1.57</pose>
+    <sensor name="laser_center" type="ray">
+      <pose>0.066 0 0 0 0 1.5708</pose>
       <ray>
         <scan>
           <horizontal>
-            <samples>XYZ</samples>
-            <resolution>XYZ</resolution>
-            <min_angle>XYZ</min_angle>
-            <max_angle>XYZ</max_angle>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.570796</min_angle>
+            <max_angle>1.570796</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.0005</min>
+          <max>0.04</max>
+          <resolution>0.0001</resolution>
+        </range>
+      </ray>
+      <plugin filename="libgazebo_ros_laser.so" name="laser">
+        <topicName>thymio_laser_center/scan</topicName>
+        <frameName>sensor_center</frameName>
+      </plugin>
+      <always_on>1</always_on>
+      <update_rate>10</update_rate>
+      <visualize>true</visualize>
+    </sensor>
+  </gazebo>
+  <!-- Sensor center left -->
+  <gazebo reference="sensor_center_left">
+    <!-- Don't forget to add a right sensor too ! (at least) -->
+    <sensor name="laser_center_left" type="ray">
+      <pose>0.064 0.0275 0 0 0 1.8326</pose>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.570796</min_angle>
+            <max_angle>1.570796</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.0005</min>
+          <max>0.04</max>
+          <resolution>0.0001</resolution>
+        </range>
+      </ray>
+      <plugin filename="libgazebo_ros_laser.so" name="laser">
+        <topicName>thymio_laser_center_left/scan</topicName>
+        <frameName>sensor_center_left</frameName>
+      </plugin>
+      <always_on>1</always_on>
+      <update_rate>10</update_rate>
+      <visualize>true</visualize>
+    </sensor>
+  </gazebo>
+  <!-- Sensor center right-->
+  <gazebo reference="sensor_center_right">
+    <!-- Don't forget to add a right sensor too ! (at least) -->
+    <sensor name="laser_center_right" type="ray">
+      <pose>0.064 -0.0275 0 0 0 1.309</pose>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.570796</min_angle>
+            <max_angle>1.570796</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.0005</min>
+          <max>0.04</max>
+          <resolution>0.0001</resolution>
+        </range>
+      </ray>
+      <plugin filename="libgazebo_ros_laser.so" name="laser">
+        <topicName>thymio_laser_center_right/scan</topicName>
+        <frameName>sensor_center_right</frameName>
+      </plugin>
+      <always_on>1</always_on>
+      <update_rate>10</update_rate>
+      <visualize>true</visualize>
+    </sensor>
+  </gazebo>
+  <!-- Sensor left -->
+  <gazebo reference="sensor_left">
+    <!-- Don't forget to add a right sensor too ! (at least) -->
+    <sensor name="laser_left" type="ray">
+      <pose>0.058 0.055 0 0 0 2.26893</pose>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.570796</min_angle>
+            <max_angle>1.570796</max_angle>
           </horizontal>
         </scan>
         <range>
@@ -64,6 +164,93 @@
       <plugin filename="libgazebo_ros_laser.so" name="laser">
         <topicName>thymio_laser_left/scan</topicName>
         <frameName>sensor_left</frameName>
+      </plugin>
+      <always_on>1</always_on>
+      <update_rate>10</update_rate>
+      <visualize>true</visualize>
+    </sensor>
+  </gazebo>
+  <!-- Sensor right -->
+  <gazebo reference="sensor_right">
+    <!-- Don't forget to add a right sensor too ! (at least) -->
+    <sensor name="laser_right" type="ray">
+      <pose>0.058 -0.055 0 0 0 1.0472</pose>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.570796</min_angle>
+            <max_angle>1.570796</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.0005</min>
+          <max>0.04</max>
+          <resolution>0.0001</resolution>
+        </range>
+      </ray>
+      <plugin filename="libgazebo_ros_laser.so" name="laser">
+        <topicName>thymio_laser_right/scan</topicName>
+        <frameName>sensor_right</frameName>
+      </plugin>
+      <always_on>1</always_on>
+      <update_rate>10</update_rate>
+      <visualize>true</visualize>
+    </sensor>
+  </gazebo>
+  <!-- Sensor back right -->
+  <gazebo reference="sensor_back_right">
+    <!-- Don't forget to add a right sensor too ! (at least) -->
+    <sensor name="laser_back_right" type="ray">
+      <pose>-0.056 -0.035 0 0 0 1.5708</pose>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.570796</min_angle>
+            <max_angle>1.570796</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.0005</min>
+          <max>0.04</max>
+          <resolution>0.0001</resolution>
+        </range>
+      </ray>
+      <plugin filename="libgazebo_ros_laser.so" name="laser">
+        <topicName>thymio_laser_back_right/scan</topicName>
+        <frameName>sensor_back_right</frameName>
+      </plugin>
+      <always_on>1</always_on>
+      <update_rate>10</update_rate>
+      <visualize>true</visualize>
+    </sensor>
+  </gazebo>
+  <!-- Sensor back left -->
+  <gazebo reference="sensor_back_left">
+    <!-- Don't forget to add a right sensor too ! (at least) -->
+    <sensor name="laser_back_left" type="ray">
+      <pose>-0.056 0.035 0 0 0 1.5708</pose>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.570796</min_angle>
+            <max_angle>1.570796</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.0005</min>
+          <max>0.04</max>
+          <resolution>0.0001</resolution>
+        </range>
+      </ray>
+      <plugin filename="libgazebo_ros_laser.so" name="laser">
+        <topicName>thymio_laser_back_left/scan</topicName>
+        <frameName>sensor_back_left</frameName>
       </plugin>
       <always_on>1</always_on>
       <update_rate>10</update_rate>
@@ -105,29 +292,21 @@
       <mass value="0.21600000000000003"/>
       <inertia ixx="0.003870792000000001" ixy="0" ixz="0" iyy="0.003862800000000001" iyz="0" izz="0.003862800000000001"/>
     </inertial>
-  </link>
-  <link name="castor_link">
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="0.038 0 -0.019"/>
       <geometry>
         <sphere radius="0.01"/>
       </geometry>
       <material name="white"/>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="0.038 0 -0.019"/>
       <geometry>
         <sphere radius="0.01"/>
       </geometry>
       <material name="white"/>
     </collision>
   </link>
-  <joint name="castor_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="castor_link"/>
-    <axis rpy="0 0 0" xyz="0 0 0"/>
-    <origin xyz="0.04 0 -0.019"/>
-  </joint>
   <!-- Implement the left wheel -->
   <!-- Implement the joint for the left wheel -->
   <link name="left_wheel_link">
@@ -139,7 +318,7 @@
       <material name="black"/>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="1.5708 0 0" xyz="0 0 0"/>
       <geometry>
         <cylinder length="0.015" radius="0.022"/>
       </geometry>
@@ -154,7 +333,7 @@
     <parent link="base_link"/>
     <child link="left_wheel_link"/>
     <axis rpy="0 0 0" xyz="0 1 0"/>
-    <origin rpy="0 0 0" xyz="-0.02 0.049 -0.007"/>
+    <origin rpy="0 0 0" xyz="-0.024 0.049 -0.007"/>
   </joint>
   <!-- Implement the right wheel -->
   <!-- Implement the joint for the right wheel -->
@@ -167,7 +346,7 @@
       <material name="black"/>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="1.5708 0 0" xyz="0 0 0"/>
       <geometry>
         <cylinder length="0.015" radius="0.022"/>
       </geometry>
@@ -182,8 +361,182 @@
     <parent link="base_link"/>
     <child link="right_wheel_link"/>
     <axis rpy="0 0 0" xyz="0 1 0"/>
-    <origin rpy="0 0 0" xyz="-0.02 -0.049 -0.007"/>
+    <origin rpy="0 0 0" xyz="-0.024 -0.049 -0.007"/>
   </joint>
-  <!-- Add your sensors using the macro -->
+  <link name="sensor_center">
+    <visual>
+      <geometry>
+        <box size="0.007 0.0025 0.004"/>
+      </geometry>
+      <material name="black"/>
+      <origin rpy="0 0 1.5708" xyz="0.066 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.007 0.0025 0.004"/>
+      </geometry>
+      <origin rpy="0 0 1.5708" xyz="0.066 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0 0 1.5708" xyz="0.066 0 0"/>
+      <inertia ixx="5.416666666666668e-09" ixy="0" ixz="0" iyy="1.8541666666666667e-09" iyz="0" izz="1.8541666666666667e-09"/>
+    </inertial>
+  </link>
+  <joint name="base_link_sensor_center" type="fixed">
+    <parent link="base_link"/>
+    <child link="sensor_center"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+  <link name="sensor_center_right">
+    <visual>
+      <geometry>
+        <box size="0.007 0.0025 0.004"/>
+      </geometry>
+      <material name="black"/>
+      <origin rpy="0 0 1.309" xyz="0.064 -0.0275 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.007 0.0025 0.004"/>
+      </geometry>
+      <origin rpy="0 0 1.309" xyz="0.064 -0.0275 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0 0 1.309" xyz="0.064 -0.0275 0"/>
+      <inertia ixx="5.416666666666668e-09" ixy="0" ixz="0" iyy="1.8541666666666667e-09" iyz="0" izz="1.8541666666666667e-09"/>
+    </inertial>
+  </link>
+  <joint name="base_link_sensor_center_right" type="fixed">
+    <parent link="base_link"/>
+    <child link="sensor_center_right"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+  <link name="sensor_center_left">
+    <visual>
+      <geometry>
+        <box size="0.007 0.0025 0.004"/>
+      </geometry>
+      <material name="black"/>
+      <origin rpy="0 0 1.8326" xyz="0.064 0.0275 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.007 0.0025 0.004"/>
+      </geometry>
+      <origin rpy="0 0 1.8326" xyz="0.064 0.0275 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0 0 1.8326" xyz="0.064 0.0275 0"/>
+      <inertia ixx="5.416666666666668e-09" ixy="0" ixz="0" iyy="1.8541666666666667e-09" iyz="0" izz="1.8541666666666667e-09"/>
+    </inertial>
+  </link>
+  <joint name="base_link_sensor_center_left" type="fixed">
+    <parent link="base_link"/>
+    <child link="sensor_center_left"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+  <link name="sensor_right">
+    <visual>
+      <geometry>
+        <box size="0.007 0.0025 0.004"/>
+      </geometry>
+      <material name="black"/>
+      <origin rpy="0 0 1.0472" xyz="0.058 -0.055 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.007 0.0025 0.004"/>
+      </geometry>
+      <origin rpy="0 0 1.0472" xyz="0.058 -0.055 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0 0 1.0472" xyz="0.058 -0.055 0"/>
+      <inertia ixx="5.416666666666668e-09" ixy="0" ixz="0" iyy="1.8541666666666667e-09" iyz="0" izz="1.8541666666666667e-09"/>
+    </inertial>
+  </link>
+  <joint name="base_link_sensor_right" type="fixed">
+    <parent link="base_link"/>
+    <child link="sensor_right"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+  <link name="sensor_left">
+    <visual>
+      <geometry>
+        <box size="0.007 0.0025 0.004"/>
+      </geometry>
+      <material name="black"/>
+      <origin rpy="0 0 2.26893" xyz="0.058 0.055 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.007 0.0025 0.004"/>
+      </geometry>
+      <origin rpy="0 0 2.26893" xyz="0.058 0.055 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0 0 2.26893" xyz="0.058 0.055 0"/>
+      <inertia ixx="5.416666666666668e-09" ixy="0" ixz="0" iyy="1.8541666666666667e-09" iyz="0" izz="1.8541666666666667e-09"/>
+    </inertial>
+  </link>
+  <joint name="base_link_sensor_left" type="fixed">
+    <parent link="base_link"/>
+    <child link="sensor_left"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+  <link name="sensor_back_right">
+    <visual>
+      <geometry>
+        <box size="0.007 0.0025 0.004"/>
+      </geometry>
+      <material name="black"/>
+      <origin rpy="0 0 1.5708" xyz="-0.056 -0.035 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.007 0.0025 0.004"/>
+      </geometry>
+      <origin rpy="0 0 1.5708" xyz="-0.056 -0.035 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0 0 1.5708" xyz="-0.056 -0.035 0"/>
+      <inertia ixx="5.416666666666668e-09" ixy="0" ixz="0" iyy="1.8541666666666667e-09" iyz="0" izz="1.8541666666666667e-09"/>
+    </inertial>
+  </link>
+  <joint name="base_link_sensor_back_right" type="fixed">
+    <parent link="base_link"/>
+    <child link="sensor_back_right"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+  <link name="sensor_back_left">
+    <visual>
+      <geometry>
+        <box size="0.007 0.0025 0.004"/>
+      </geometry>
+      <material name="black"/>
+      <origin rpy="0 0 1.5708" xyz="-0.056 0.035 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.007 0.0025 0.004"/>
+      </geometry>
+      <origin rpy="0 0 1.5708" xyz="-0.056 0.035 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0 0 1.5708" xyz="-0.056 0.035 0"/>
+      <inertia ixx="5.416666666666668e-09" ixy="0" ixz="0" iyy="1.8541666666666667e-09" iyz="0" izz="1.8541666666666667e-09"/>
+    </inertial>
+  </link>
+  <joint name="base_link_sensor_back_left" type="fixed">
+    <parent link="base_link"/>
+    <child link="sensor_back_left"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
 </robot>
 
