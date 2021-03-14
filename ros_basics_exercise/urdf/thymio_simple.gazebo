@@ -8,7 +8,19 @@
     <gazebo reference="sensor_right">
         <material>Gazebo/Black</material>
     </gazebo>
-    <gazebo reference="sensor_right">
+    <gazebo reference="sensor_center">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="sensor_center_right">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="sensor_center_left">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="sensor_back_right">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="sensor_back_left">
         <material>Gazebo/Black</material>
     </gazebo>
     <gazebo reference="right_wheel_link">
@@ -25,14 +37,14 @@
     <!-- Sensor center -->
     <gazebo reference="sensor_center"> <!-- Don't forget to add a right sensor too ! (at least) -->
         <sensor type="ray" name="laser_center">
-            <pose>0 0 0 0 0 1.5708</pose>
+            <pose>0.066 0 0 0 0 1.5708</pose>
             <ray>
                 <scan>
                     <horizontal>
-            <samples>720</samples>
-            <resolution>1</resolution>
-            <min_angle>-1.570796</min_angle>
-            <max_angle>1.570796</max_angle>
+                        <samples>720</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-1.570796</min_angle>
+                        <max_angle>1.570796</max_angle>
                     </horizontal>
                 </scan>
                 <range>
@@ -169,7 +181,7 @@
 
 
     <!-- Sensor back right -->
-    <gazebo reference="sensor_right"> <!-- Don't forget to add a right sensor too ! (at least) -->
+    <gazebo reference="sensor_back_right"> <!-- Don't forget to add a right sensor too ! (at least) -->
         <sensor type="ray" name="laser_back_right">
             <pose>-0.056 -0.035 0 0 0 1.5708</pose>
             <ray>
@@ -199,7 +211,7 @@
     
     
     <!-- Sensor back left -->
-    <gazebo reference="sensor_right"> <!-- Don't forget to add a right sensor too ! (at least) -->
+    <gazebo reference="sensor_back_left"> <!-- Don't forget to add a right sensor too ! (at least) -->
         <sensor type="ray" name="laser_back_left">
             <pose>-0.056 0.035 0 0 0 1.5708</pose>
             <ray>
