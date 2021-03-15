@@ -2,25 +2,25 @@
 <robot xmlns:xacro="https://www.ros.org/wiki/xacro">
 
     <!-- Colours -->
-    <gazebo reference="sensor_center">
+    <gazebo reference="sensor_0">
         <material>Gazebo/Black</material>
     </gazebo>
-    <gazebo reference="sensor_center_left">
+    <gazebo reference="sensor_1">
         <material>Gazebo/Black</material>
     </gazebo>
-    <gazebo reference="sensor_center_right">
+    <gazebo reference="sensor_2">
         <material>Gazebo/Black</material>
     </gazebo>
-    <gazebo reference="sensor_left">
+    <gazebo reference="sensor_3">
         <material>Gazebo/Black</material>
     </gazebo>
-    <gazebo reference="sensor_right">
+    <gazebo reference="sensor_4">
         <material>Gazebo/Black</material>
     </gazebo>
-    <gazebo reference="sensor_back_right">
+    <gazebo reference="sensor_5">
         <material>Gazebo/Black</material>
     </gazebo>
-    <gazebo reference="sensor_back_left">
+    <gazebo reference="sensor_6">
         <material>Gazebo/Black</material>
     </gazebo>
     <gazebo reference="right_wheel_link">
@@ -34,96 +34,7 @@
     </gazebo>
 
     <!-- Sensor definitions for the simple Thymio -->
-    <!-- Sensor center -->
-    <gazebo reference="sensor_center">
-        <sensor type="ray" name="laser_center">
-            <pose>0.066 0 0 0 0 1.5708</pose>
-            <!--<pose>0 0 0 0 0 0</pose>-->
-            <ray>
-                <scan>
-                    <horizontal>
-                        <samples>1</samples>
-                        <resolution>1</resolution>
-                        <min_angle>0</min_angle>
-                        <max_angle>0</max_angle>
-                    </horizontal>
-                </scan>
-                <range>
-                    <!--<min>0.0005</min>
-                    <max>0.04</max>
-                    <resolution>0.0001</resolution>-->
-                    <min>0.01</min>
-                    <max>0.1</max>
-                    <resolution>0.01</resolution>
-                </range>
-            </ray>
-            <plugin name="laser_center" filename="libgazebo_ros_laser.so">
-                <topicName>thymio_laser_center/scan</topicName>
-                <frameName>sensor_center</frameName>
-            </plugin>
-            <always_on>1</always_on>
-            <update_rate>10</update_rate>
-            <visualize>true</visualize>
-        </sensor>
-    </gazebo>
-
-    <gazebo reference="sensor_center_left">
-        <sensor type="ray" name="laser_center_left">
-            <pose>0.064 0.0275 0 0 0 1.8326</pose>
-            <ray>
-                <scan>
-                    <horizontal>
-                        <samples>1</samples>
-                        <resolution>1</resolution>
-                        <min_angle>0.2618</min_angle>
-                        <max_angle>0.2618</max_angle>
-                    </horizontal>
-                </scan>
-                <range>
-                    <min>0.01</min>
-                    <max>0.1</max>
-                    <resolution>0.01</resolution>
-                </range>
-            </ray>
-            <plugin name="laser_center_left" filename="libgazebo_ros_laser.so">
-                <topicName>thymio_laser_center_left/scan</topicName>
-                <frameName>sensor_center_left</frameName>
-            </plugin>
-            <always_on>1</always_on>
-            <update_rate>10</update_rate>
-            <visualize>true</visualize>
-        </sensor>
-    </gazebo>
-
-    <gazebo reference="sensor_center_right"> 
-        <sensor type="ray" name="laser_center_right">
-            <pose>0.064 -0.0275 0 0 0 1.309</pose>
-            <ray>
-                <scan>
-                    <horizontal>
-                        <samples>1</samples>
-                        <resolution>1</resolution>
-                        <min_angle>-0.2618</min_angle>
-                        <max_angle>-0.2618</max_angle>
-                    </horizontal>
-                </scan>
-                <range>
-                    <min>0.01</min>
-                    <max>0.1</max>
-                    <resolution>0.01</resolution>
-                </range>
-            </ray>
-            <plugin name="laser_center_right" filename="libgazebo_ros_laser.so">
-                <topicName>thymio_laser_center_right/scan</topicName>
-                <frameName>sensor_center_right</frameName>
-            </plugin>
-            <always_on>1</always_on>
-            <update_rate>10</update_rate>
-            <visualize>true</visualize>
-        </sensor>
-    </gazebo>
-
-    <gazebo reference="sensor_left"> 
+    <gazebo reference="sensor_0"> 
         <sensor type="ray" name="laser_left">
             <pose>0.058 0.055 0 0 0 2.26893</pose>
             <ray>
@@ -141,9 +52,9 @@
                     <resolution>0.01</resolution>
                 </range>
             </ray>
-            <plugin name="laser_left" filename="libgazebo_ros_laser.so">
-                <topicName>thymio_laser_left/scan</topicName>
-                <frameName>sensor_left</frameName>
+            <plugin name="laser" filename="libgazebo_ros_laser.so">
+                <topicName>thymio_laser_0/scan</topicName>
+                <frameName>sensor_0</frameName>
             </plugin>
             <always_on>1</always_on>
             <update_rate>10</update_rate>
@@ -151,7 +62,94 @@
         </sensor>
     </gazebo>
 
-    <gazebo reference="sensor_right"> 
+    <gazebo reference="sensor_1">
+        <sensor type="ray" name="laser_center_left">
+            <pose>0.064 0.0275 0 0 0 1.8326</pose>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>1</samples>
+                        <resolution>1</resolution>
+                        <min_angle>0.2618</min_angle>
+                        <max_angle>0.2618</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.01</min>
+                    <max>0.1</max>
+                    <resolution>0.01</resolution>
+                </range>
+            </ray>
+            <plugin name="laser" filename="libgazebo_ros_laser.so">
+                <topicName>thymio_laser_1/scan</topicName>
+                <frameName>sensor_1</frameName>
+            </plugin>
+            <always_on>1</always_on>
+            <update_rate>10</update_rate>
+            <visualize>true</visualize>
+        </sensor>
+    </gazebo>
+
+    <gazebo reference="sensor_2">
+        <sensor type="ray" name="laser_center">
+            <pose>0.066 0 0 0 0 1.5708</pose>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>1</samples>
+                        <resolution>1</resolution>
+                        <min_angle>0</min_angle>
+                        <max_angle>0</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.01</min>
+                    <max>0.1</max>
+                    <resolution>0.01</resolution>
+                </range>
+            </ray>
+            <plugin name="laser" filename="libgazebo_ros_laser.so">
+                <topicName>thymio_laser_2/scan</topicName>
+                <frameName>sensor_2</frameName>
+            </plugin>
+            <always_on>1</always_on>
+            <update_rate>10</update_rate>
+            <visualize>true</visualize>
+        </sensor>
+    </gazebo>
+
+
+    <gazebo reference="sensor_3"> 
+        <sensor type="ray" name="laser_center_right">
+            <pose>0.064 -0.0275 0 0 0 1.309</pose>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>1</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-0.2618</min_angle>
+                        <max_angle>-0.2618</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.01</min>
+                    <max>0.1</max>
+                    <resolution>0.01</resolution>
+                </range>
+            </ray>
+            <plugin name="laser" filename="libgazebo_ros_laser.so">
+                <topicName>thymio_laser_3/scan</topicName>
+                <frameName>sensor_3</frameName>
+            </plugin>
+            <always_on>1</always_on>
+            <update_rate>10</update_rate>
+            <visualize>true</visualize>
+        </sensor>
+    </gazebo>
+
+
+
+    <gazebo reference="sensor_4"> 
         <sensor type="ray" name="laser_right">
             <pose>0.058 -0.055 0 0 0 1.0472</pose>
             <ray>
@@ -169,9 +167,9 @@
                     <resolution>0.01</resolution>
                 </range>
             </ray>
-            <plugin name="laser_right" filename="libgazebo_ros_laser.so">
-                <topicName>thymio_laser_right/scan</topicName>
-                <frameName>sensor_right</frameName>
+            <plugin name="laser" filename="libgazebo_ros_laser.so">
+                <topicName>thymio_laser_4/scan</topicName>
+                <frameName>sensor_4</frameName>
             </plugin>
             <always_on>1</always_on>
             <update_rate>10</update_rate>
@@ -179,7 +177,7 @@
         </sensor>
     </gazebo>
 
-    <gazebo reference="sensor_back_right"> 
+    <gazebo reference="sensor_5"> 
         <sensor type="ray" name="laser_back_right">
             <pose>-0.056 -0.035 0 0 0 1.5708</pose>
             <ray>
@@ -197,9 +195,9 @@
                     <resolution>0.01</resolution>
                 </range>
             </ray>
-            <plugin name="laser_back_right" filename="libgazebo_ros_laser.so">
-                <topicName>thymio_laser_back_right/scan</topicName>
-                <frameName>sensor_back_right</frameName>
+            <plugin name="laser" filename="libgazebo_ros_laser.so">
+                <topicName>thymio_laser_5/scan</topicName>
+                <frameName>sensor_5</frameName>
             </plugin>
             <always_on>1</always_on>
             <update_rate>10</update_rate>
@@ -207,7 +205,7 @@
         </sensor>
     </gazebo>
     
-        <gazebo reference="sensor_back_left"> 
+        <gazebo reference="sensor_6"> 
         <sensor type="ray" name="laser_back_left">
             <pose>-0.056 0.035 0 0 0 1.5708</pose>
             <ray>
@@ -225,9 +223,9 @@
                     <resolution>0.01</resolution>
                 </range>
             </ray>
-            <plugin name="laser_back_left" filename="libgazebo_ros_laser.so">
-                <topicName>thymio_laser_back_left/scan</topicName>
-                <frameName>sensor_back_left</frameName>
+            <plugin name="laser" filename="libgazebo_ros_laser.so">
+                <topicName>thymio_laser_6/scan</topicName>
+                <frameName>sensor_6</frameName>
             </plugin>
             <always_on>1</always_on>
             <update_rate>10</update_rate>
@@ -252,3 +250,6 @@
             <odometryFrame>odom</odometryFrame>
             <robotBaseFrame>base_link</robotBaseFrame>
         </plugin>
+    </gazebo>
+
+</robot>
