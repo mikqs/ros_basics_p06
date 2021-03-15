@@ -20,7 +20,8 @@ dt = 0.1 #10 Hz is dt=0.1 s
 
 pose_msg = SimplePoseStamped()
 curr_pose = None
-val_irs = np.array(np.ones(7, dtype=np.float32)*np.inf)
+# val_irs = np.array(np.ones(7, dtype=np.float32)*np.inf)
+val_irs = np.zeros(7)
 
 def get_pose(_data):
     global curr_pose
@@ -34,31 +35,51 @@ def get_sensor(msg):
     sensor = msg.header.frame_id
     if sensor == 'sensor_0':
         val_irs[0] = msg.ranges[0]
+        # if math.isinf(val_irs[0]):
+        #     val_irs[0] = 0.1
     if sensor == 'sensor_1':
         val_irs[1] = msg.ranges[0]
+        # if math.isinf(val_irs[1]):
+        #     val_irs[1] = 0.1
     if sensor == 'sensor_2':
         val_irs[2] = msg.ranges[0]
+        # if math.isinf(val_irs[2]):
+        #     val_irs[2] = 0.1
     if sensor == 'sensor_3':
         val_irs[3] = msg.ranges[0]
+        # if math.isinf(val_irs[3]):
+        #     val_irs[3] = 0.1
     if sensor == 'sensor_4':
         val_irs[4] = msg.ranges[0]
+        # if math.isinf(val_irs[4]):
+        #     val_irs[4] = 0.1
     if sensor == 'sensor_5':
         val_irs[5] = msg.ranges[0]
+        # if math.isinf(val_irs[5]):
+        #     val_irs[5] = 0.1
     if sensor == 'sensor_6':
         val_irs[6] = msg.ranges[0]
+        # if math.isinf(val_irs[6]):
+        #     val_irs[6] = 0.1
+
     #print(msg.intensities[0])
     #print(msg.header.frame_id)
-    # print(val_irs)
+    print(val_irs)
     simple_obstacle_avoid(val_irs)
 
 def simple_obstacle_avoid(val_irs):
     global detect_obstacle
     # Process sensor data here.     
-    obstacleRight = val_irs[3]+val_irs[4] + val_irs[2]
-    obstacleLeft = val_irs[0]+val_irs[1] + val_irs[2]
-    obstacleBack = val_irs[5] + val_irs[6]
-    
-    speed = 0.2
+    # obstacleRight = val_irs[3]+val_irs[4] + val_irs[2]
+    # obstacleLeft = val_irs[0]+val_irs[1] + val_irs[2]
+    # obstacleBack = val_irs[5] + val_irs[6]
+    # obstacleCenter = val_irs[2]
+    obstacleRight = sum(filter(lambda x: x != float('inf'), val_irs[2:5]))
+    obstacleLeft = sum(filter(lambda x: x != float('inf'), val_irs[0:3]))
+    obstacleBack = sum(filter(lambda x: x != float('inf'), val_irs[5:7]))
+    obstacleCenter = val_irs[2]
+
+    speed = 0.1
     detect_obstacle = False
     # Enter here functions to send actuator commands:
     if obstacleRight < 0.1 and obstacleLeft > 0.1:
@@ -68,14 +89,17 @@ def simple_obstacle_avoid(val_irs):
         set_velocity(-speed, speed)
         detect_obstacle = True
     elif obstacleRight < 0.1 and obstacleLeft < 0.1:
-        set_velocity(speed, -speed)
-        detect_obstacle = True
-    elif obstacleBack < 0.1:
         set_velocity(-speed, -speed)
         detect_obstacle = True
+    elif obstacleBack < 0.1:
+        set_velocity(speed, speed)
+        detect_obstacle = True
+    # elif obstacleCenter < 0.1:
+    #     set_velocity(-speed, -speed)
+    #     detect_obstacle = True
     else:
         pass
-    print(detect_obstacle)
+    # print(detect_obstacle)
 
 def set_velocity(v,w):
     nVel = SimpleVelocities(v,w)
@@ -171,6 +195,3 @@ if __name__ == '__main__':
 
     while not rospy.is_shutdown():
         spin()        
-
-
-

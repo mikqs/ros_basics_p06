@@ -4,7 +4,7 @@
     <xacro:include filename="$(find ros_basics_models)/urdf/utils/materials.xacro" />
     <xacro:include filename="$(find ros_basics_models)/urdf/utils/inertia.xacro" />
 
-    <xacro:property name="radius" value="0.02"/>
+    <xacro:property name="radius" value="0.03"/>
     <xacro:property name="mass" value="0.027"/>
 
     <link name="ball">

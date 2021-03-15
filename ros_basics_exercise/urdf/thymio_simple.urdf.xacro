@@ -118,18 +118,20 @@
 
     <!-- Add your sensors using the macro -->
     <!-- Left -->
-    <xacro:csensor plink="base_link" id="0" mass="0.001" originrpy="0 0 2.26893" originxyz="0 0 0" jointxyz="0.058 0.055 0" jointrpy="0 0 0" />
+    <xacro:csensor plink="base_link" id="0" mass="0.001" originrpy="0 0 2.26893" originxyz="-0.003 0 0" jointxyz="0.058 0.055 0" jointrpy="0 0 0" />
     <!-- CL -->
-    <xacro:csensor plink="base_link" id="1" mass="0.001" originrpy="0 0 1.8326" originxyz="0 0 0" jointxyz="0.064 0.0275 0" jointrpy="0 0 0" />
+    <xacro:csensor plink="base_link" id="1" mass="0.001" originrpy="0 0 1.8326" originxyz="-0.003 0 0" jointxyz="0.064 0.0275 0" jointrpy="0 0 0" />
     <!-- C -->
-    <xacro:csensor plink="base_link" id="2" mass="0.001" originrpy="0 0 1.5708" originxyz="0 0 0" jointxyz="0.066 0 0" jointrpy="0 0 0" />
+    <xacro:csensor plink="base_link" id="2" mass="0.001" originrpy="0 0 1.5708" originxyz="-0.003 0 0" jointxyz="0.066 0 0" jointrpy="0 0 0" />
     <!-- CR -->
-    <xacro:csensor plink="base_link" id="3" mass="0.001" originrpy="0 0 1.309" originxyz="0 0 0" jointxyz="0.064 -0.0275 0" jointrpy="0 0 0" />
+    <xacro:csensor plink="base_link" id="3" mass="0.001" originrpy="0 0 1.309" originxyz="-0.003 0 0" jointxyz="0.064 -0.0275 0" jointrpy="0 0 0" />
     <!-- R -->
-    <xacro:csensor plink="base_link" id="4" mass="0.001" originrpy="0 0 1.0472" originxyz="0 0 0" jointxyz="0.058 -0.055 0" jointrpy="0 0 0" />
+    <xacro:csensor plink="base_link" id="4" mass="0.001" originrpy="0 0 1.0472" originxyz="-0.003 0 0" jointxyz="0.058 -0.055 0" jointrpy="0 0 0" />
     <!-- BR -->
-    <xacro:csensor plink="base_link" id="5" mass="0.001" originrpy="0 0 1.5708" originxyz="0 0 0" jointxyz="-0.056 -0.035 0" jointrpy="0 0 0" />
+    <xacro:csensor plink="base_link" id="5" mass="0.001" originrpy="0 0 1.5708" originxyz="-0.003 0 0" jointxyz="-0.056 -0.035 0" jointrpy="0 0 0" />
     <!-- BL -->
-    <xacro:csensor plink="base_link" id="6" mass="0.001" originrpy="0 0 1.5708" originxyz="0 0 0" jointxyz="-0.056 0.035 0" jointrpy="0 0 0" />
+    <xacro:csensor plink="base_link" id="6" mass="0.001" originrpy="0 0 1.5708" originxyz="-0.003 0 0" jointxyz="-0.056 0.035 0" jointrpy="0 0 0" />
+
+
 
 </robot>
