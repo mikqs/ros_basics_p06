@@ -52,8 +52,8 @@
                     <!--<min>0.0005</min>
                     <max>0.04</max>
                     <resolution>0.0001</resolution>-->
-                    <min>0.05</min>
-                    <max>1</max>
+                    <min>0.01</min>
+                    <max>0.1</max>
                     <resolution>0.01</resolution>
                 </range>
             </ray>
@@ -80,8 +80,8 @@
                     </horizontal>
                 </scan>
                 <range>
-                    <min>0.05</min>
-                    <max>1</max>
+                    <min>0.01</min>
+                    <max>0.1</max>
                     <resolution>0.01</resolution>
                 </range>
             </ray>
@@ -108,8 +108,8 @@
                     </horizontal>
                 </scan>
                 <range>
-                    <min>0.05</min>
-                    <max>1</max>
+                    <min>0.01</min>
+                    <max>0.1</max>
                     <resolution>0.01</resolution>
                 </range>
             </ray>
@@ -136,8 +136,8 @@
                     </horizontal>
                 </scan>
                 <range>
-                    <min>0.05</min>
-                    <max>1</max>
+                    <min>0.01</min>
+                    <max>0.1</max>
                     <resolution>0.01</resolution>
                 </range>
             </ray>
@@ -164,8 +164,8 @@
                     </horizontal>
                 </scan>
                 <range>
-                    <min>0.05</min>
-                    <max>1</max>
+                    <min>0.01</min>
+                    <max>0.1</max>
                     <resolution>0.01</resolution>
                 </range>
             </ray>
@@ -192,8 +192,8 @@
                     </horizontal>
                 </scan>
                 <range>
-                    <min>-1</min>
-                    <max>-0.05</max>
+                    <min>-0.01</min>
+                    <max>-0.1</max>
                     <resolution>0.01</resolution>
                 </range>
             </ray>
@@ -220,8 +220,8 @@
                     </horizontal>
                 </scan>
                 <range>
-                    <min>-1</min>
-                    <max>-0.05</max>
+                    <min>-0.01</min>
+                    <max>-0.1</max>
                     <resolution>0.01</resolution>
                 </range>
             </ray>
@@ -252,6 +252,3 @@
             <odometryFrame>odom</odometryFrame>
             <robotBaseFrame>base_link</robotBaseFrame>
         </plugin>
-    </gazebo>
-
-</robot>
