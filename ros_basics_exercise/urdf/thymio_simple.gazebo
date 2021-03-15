@@ -57,7 +57,7 @@
                     <resolution>0.01</resolution>
                 </range>
             </ray>
-            <plugin name="laser1" filename="libgazebo_ros_laser.so">
+            <plugin name="laser_center" filename="libgazebo_ros_laser.so">
                 <topicName>thymio_laser_center/scan</topicName>
                 <frameName>sensor_center</frameName>
             </plugin>
@@ -85,7 +85,7 @@
                     <resolution>0.01</resolution>
                 </range>
             </ray>
-            <plugin name="laser2" filename="libgazebo_ros_laser.so">
+            <plugin name="laser_center_left" filename="libgazebo_ros_laser.so">
                 <topicName>thymio_laser_center_left/scan</topicName>
                 <frameName>sensor_center_left</frameName>
             </plugin>
