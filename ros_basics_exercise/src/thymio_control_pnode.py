@@ -31,36 +31,29 @@ def get_pose(_data):
 
 def get_sensor(msg):
     global val_irs
-
     sensor = msg.header.frame_id
+    val = msg.ranges[0]
+    max_val = 1000
+
+    if math.isinf(val):
+        val = 0
+    else:
+        val = (0.1 - val) * max_val
+
     if sensor == 'sensor_0':
-        val_irs[0] = msg.ranges[0]
-        # if math.isinf(val_irs[0]):
-        #     val_irs[0] = 0.1
+        val_irs[0] = int(val)
     if sensor == 'sensor_1':
-        val_irs[1] = msg.ranges[0]
-        # if math.isinf(val_irs[1]):
-        #     val_irs[1] = 0.1
+        val_irs[1] = int(val)
     if sensor == 'sensor_2':
-        val_irs[2] = msg.ranges[0]
-        # if math.isinf(val_irs[2]):
-        #     val_irs[2] = 0.1
+        val_irs[2] = int(val)
     if sensor == 'sensor_3':
-        val_irs[3] = msg.ranges[0]
-        # if math.isinf(val_irs[3]):
-        #     val_irs[3] = 0.1
+        val_irs[3] = int(val)
     if sensor == 'sensor_4':
-        val_irs[4] = msg.ranges[0]
-        # if math.isinf(val_irs[4]):
-        #     val_irs[4] = 0.1
+        val_irs[4] = int(val)
     if sensor == 'sensor_5':
-        val_irs[5] = msg.ranges[0]
-        # if math.isinf(val_irs[5]):
-        #     val_irs[5] = 0.1
+        val_irs[5] = int(val)
     if sensor == 'sensor_6':
-        val_irs[6] = msg.ranges[0]
-        # if math.isinf(val_irs[6]):
-        #     val_irs[6] = 0.1
+        val_irs[6] = int(val)
 
     #print(msg.intensities[0])
     #print(msg.header.frame_id)
@@ -70,36 +63,29 @@ def get_sensor(msg):
 def simple_obstacle_avoid(val_irs):
     global detect_obstacle
     # Process sensor data here.     
-    # obstacleRight = val_irs[3]+val_irs[4] + val_irs[2]
-    # obstacleLeft = val_irs[0]+val_irs[1] + val_irs[2]
-    # obstacleBack = val_irs[5] + val_irs[6]
-    # obstacleCenter = val_irs[2]
-    obstacleRight = sum(filter(lambda x: x != float('inf'), val_irs[2:5]))
-    obstacleLeft = sum(filter(lambda x: x != float('inf'), val_irs[0:3]))
-    obstacleBack = sum(filter(lambda x: x != float('inf'), val_irs[5:7]))
+    obstacleRight = val_irs[3]+val_irs[4] + val_irs[2]
+    obstacleLeft = val_irs[0]+val_irs[1] + val_irs[2]
+    obstacleBack = val_irs[5] + val_irs[6]
     obstacleCenter = val_irs[2]
 
-    speed = 0.1
-    detect_obstacle = False
+    speed = 0.08
+    
     # Enter here functions to send actuator commands:
-    if obstacleRight < 0.1 and obstacleLeft > 0.1:
-        set_velocity(speed, -speed)
+    if obstacleRight > 200 and obstacleLeft < 200:
+        set_velocity(0, speed)
         detect_obstacle = True
-    elif obstacleRight > 0.1 and obstacleLeft < 0.1:
-        set_velocity(-speed, speed)
+    elif obstacleRight < 200 and obstacleLeft > 200:
+        set_velocity(speed, 0)
         detect_obstacle = True
-    elif obstacleRight < 0.1 and obstacleLeft < 0.1:
+    elif obstacleRight > 200 and obstacleLeft > 200:
         set_velocity(-speed, -speed)
         detect_obstacle = True
-    elif obstacleBack < 0.1:
+    elif obstacleBack > 200:
         set_velocity(speed, speed)
         detect_obstacle = True
-    # elif obstacleCenter < 0.1:
-    #     set_velocity(-speed, -speed)
-    #     detect_obstacle = True
     else:
-        pass
-    # print(detect_obstacle)
+        set_velocity(0, 0)
+        detect_obstacle = False
 
 def set_velocity(v,w):
     nVel = SimpleVelocities(v,w)
@@ -156,6 +142,7 @@ def spin():
         err_distance_sum = err_distance_sum + err_distance * dt
         err_angle_sum = err_angle_sum + err_angle * dt
 
+        # detect_obstacle = False
         if detect_obstacle is False:
             #Set control input
             v = Kp_v * err_distance + Kd_v * err_distance_diff + Ki_v * err_distance_sum
