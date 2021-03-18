@@ -1,0 +1,48 @@
+<robot name="box-setup"
+    xmlns:xacro="https://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find ros_basics_models)/urdf/utils/materials.xacro" />
+    <xacro:include filename="$(find ros_basics_models)/urdf/utils/inertia.xacro" />
+
+    <xacro:property name="radius" value="0.03"/>
+    <xacro:property name="mass" value="0.027"/>
+
+    <xacro:arg name="left_wheel_mu" default="100.0"/>
+    <xacro:property name="left_wheel_mu_p" value="$(arg left_wheel_mu)"/>
+    <xacro:arg name="right_wheel_mu" default="100.0"/>
+    <xacro:property name="right_wheel_mu_p" value="$(arg right_wheel_mu)"/>
+    <xacro:property name="wheel_radius" value="0.022"/>
+    <xacro:property name="wheel_len" value="0.015"/>
+    <xacro:arg name="mass" default="0.270"/>
+    <xacro:property name="mass_p" value="$(arg mass)"/>
+    <xacro:property name="body_mass" value="${mass_p * 0.80}"/>
+    <xacro:property name="wheel_mass" value="${mass_p * 0.10}"/>
+
+    <link name="box">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <box size="0.05 0.045 0.07"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <box size="0.05 0.045 0.07"/>
+            </geometry>
+            <material name="white"/>
+        </collision>
+        <inertial>
+            <mass value="${body_mass}"/>
+            <xacro:box_inertia mass="${body_mass}" x="0.05" y="0.045" z='0.07' />
+        </inertial>
+    </link>
+
+
+    <gazebo reference="box">
+        <turnGravityOff>false</turnGravityOff>
+        <material>Gazebo/Orange</material>
+    </gazebo>
+
+</robot>
