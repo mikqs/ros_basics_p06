@@ -2,6 +2,7 @@
 
 import rospy
 import math
+from datetime import datetime
 from ros_basics_msgs.srv import CurrentWaypoint
 from ros_basics_msgs.srv import CheckWaypointReached
 from ros_basics_msgs.msg import SimplePoseStamped
@@ -30,6 +31,7 @@ def get_pose(_data):
     global pose_msg
     pose_msg = _data
     curr_pose = _data.pose
+    print(curr_pose, file=f)
 
 def get_sensor(msg):
     global val_irs
@@ -175,5 +177,9 @@ if __name__ == '__main__':
     rospy.Subscriber('proximity_sensors', ProximitySensors, get_sensor)
     pub = rospy.Publisher('set_velocities', SimpleVelocities)
 
-    while not rospy.is_shutdown():
-        spin()        
+    pose_file = '/home/student/ros_basics_ws/src/logs/pose_' + str(datetime.now().strftime('%m%d%Y_%H:%M:%S')) + '.yaml'
+
+    with open(pose_file, "a") as f:
+        while not rospy.is_shutdown():
+            spin()
+      
