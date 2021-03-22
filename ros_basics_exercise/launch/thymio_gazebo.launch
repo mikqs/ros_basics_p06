@@ -1,7 +1,7 @@
 <launch>
     <param name="thymio_description" command="$(find xacro)/xacro '$(find ros_basics_exercise)/urdf/thymio_simple.urdf.xacro'"/>
 
-    <arg name="x" default="0"/>
+    <arg name="x" default="-0.2"/>
     <arg name="y" default="0"/>
     <arg name="z" default="0.12"/>
     <arg name="node_start_delay" default="3.0" />

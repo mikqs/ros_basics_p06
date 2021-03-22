@@ -12,7 +12,8 @@ import numpy as np
 from time import sleep
 
 Kp_v = 0.3
-Kp_w = 3
+# Kp_w = 3
+Kp_w = 0.5
 Ki_v = 0.03
 Ki_w = 0.03
 Kd_v = 0.01
@@ -54,16 +55,18 @@ def get_sensor(msg):
 
 def simple_obstacle_avoid(val_irs):
     global detect_obstacle
+
     # Process sensor data here.     
     obstacleRight = val_irs[3]+val_irs[4] 
     obstacleLeft = val_irs[0]+val_irs[1] 
     obstacleBack = val_irs[5] + val_irs[6]
     obstacleCenter = val_irs[2]
 
-    v = 0.08
+    v = 0.06
     w  = 1
-    #thresh = 2500
-    thresh = 2000
+    thresh = 2000 # used for simulation
+    # thresh = 2000 # used for real-life
+
     # Enter here functions to send actuator commands:
     if obstacleRight > thresh and obstacleLeft < thresh:
         set_velocity(0, w)
@@ -84,7 +87,8 @@ def simple_obstacle_avoid(val_irs):
         detect_obstacle = False
 
     if detect_obstacle:
-        sleep(0.08)
+        # Keep the robot in obstacle avoidance for a while
+        sleep(0.4)
 
 def set_velocity(v,w):
     nVel = SimpleVelocities(v,w)

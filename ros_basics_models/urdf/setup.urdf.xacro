@@ -235,7 +235,7 @@
 
 
     <gazebo reference="setup">
-        <material>Gazebo/Black</material>
+        <material>Gazebo/WoodFloor</material>
     </gazebo>
 
     <gazebo reference="stickers">
