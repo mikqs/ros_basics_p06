@@ -31,7 +31,7 @@ def get_pose(_data):
     global pose_msg
     pose_msg = _data
     curr_pose = _data.pose
-    print(curr_pose, file=f)
+    print(pose_msg, file=f)
 
 def get_sensor(msg):
     global val_irs
