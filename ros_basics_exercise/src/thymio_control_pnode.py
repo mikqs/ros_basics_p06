@@ -12,7 +12,6 @@ from sensor_msgs.msg import LaserScan
 import numpy as np
 from time import sleep
 
-#Kp_v = 1
 Kp_v = 0.3
 # Kp_w = 3
 Kp_w = 0.5
@@ -33,6 +32,10 @@ def get_pose(_data):
     pose_msg = _data
     curr_pose = _data.pose
     print(pose_msg, file=f)
+    
+def set_velocity(v,w):
+    nVel = SimpleVelocities(v,w)
+    pub.publish(nVel)
 
 def get_sensor(msg):
     global val_irs
@@ -92,10 +95,6 @@ def simple_obstacle_avoid(val_irs):
     if detect_obstacle:
         # Keep the robot in obstacle avoidance for a while
         sleep(0.4)
-
-def set_velocity(v,w):
-    nVel = SimpleVelocities(v,w)
-    pub.publish(nVel)
 
 def spin():
     global err_distance_prev
