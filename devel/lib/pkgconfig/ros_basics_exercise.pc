@@ -1,0 +1,8 @@
+prefix=/home/student/ros_basics_ws/devel
+
+Name: ros_basics_exercise
+Description: Description of ros_basics_exercise
+Version: 0.1.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: ros_basics_msgs

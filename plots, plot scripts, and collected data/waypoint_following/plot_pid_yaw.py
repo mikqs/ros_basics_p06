@@ -5,13 +5,13 @@ from matplotlib.ticker import FuncFormatter, MultipleLocator, FormatStrFormatter
 import matplotlib.patches as patches
 import numpy as np
 
-simu_x_file = 'simu_pid_secs.txt'
-simu_xn_file = 'simu_pid_nsecs.txt'
-simu_y_file = 'simu_pid_yaw.txt'
-real_x_file = 'real_pid_secs.txt'
-real_xn_file = 'real_pid_nsecs.txt'
-real_y_file = 'real_pid_yaw.txt'
-plot_file = 'pid_yaw.eps'
+simu_x_file = 'data/simu_pid_secs.txt'
+simu_xn_file = 'data/simu_pid_nsecs.txt'
+simu_y_file = 'data/simu_pid_yaw.txt'
+real_x_file = 'data/real_pid_secs.txt'
+real_xn_file = 'data/real_pid_nsecs.txt'
+real_y_file = 'data/real_pid_yaw.txt'
+plot_file = 'plots/pid_yaw.eps'
 
 def main():
     with open(simu_x_file, 'r') as f:

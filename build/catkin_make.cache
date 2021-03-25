@@ -1,0 +1,2 @@
+ros_basics_control:ros_basics_exercise:ros_basics_models:ros_basics_msgs:ros_basics_vision
+-DCATKIN_DEVEL_PREFIX=/home/student/ros_basics_ws/devel -DCMAKE_INSTALL_PREFIX=/home/student/ros_basics_ws/install -G Unix Makefiles

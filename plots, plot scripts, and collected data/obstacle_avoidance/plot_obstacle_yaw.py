@@ -5,13 +5,13 @@ from matplotlib.ticker import FuncFormatter, MultipleLocator, FormatStrFormatter
 import matplotlib.patches as patches
 import numpy as np
 
-simu_x_file = 'simu_obs2_secs.txt'
-simu_xn_file = 'simu_obs2_nsecs.txt'
-simu_y_file = 'simu_obs2_yaw.txt'
-real_x_file = 'real_obs2_secs.txt'
-real_xn_file = 'real_obs2_nsecs.txt'
-real_y_file = 'real_obs2_yaw.txt'
-plot_file = 'obstacle_yaw.eps'
+simu_x_file = 'data/simu_obs2_secs.txt'
+simu_xn_file = 'data/simu_obs2_nsecs.txt'
+simu_y_file = 'data/simu_obs2_yaw.txt'
+real_x_file = 'data/real_obs2_secs.txt'
+real_xn_file = 'data/real_obs2_nsecs.txt'
+real_y_file = 'data/real_obs2_yaw.txt'
+plot_file = 'plots/obstacle_yaw.eps'
 
 def main():
     with open(simu_x_file, 'r') as f:

@@ -29,11 +29,11 @@ from matplotlib.ticker import FormatStrFormatter
 import matplotlib.patches as patches
 import numpy as np
 
-simu_x_file = 'simu_obs2_x.txt'
-simu_y_file = 'simu_obs2_y.txt'
-real_x_file = 'real_obs2_x.txt'
-real_y_file = 'real_obs2_y.txt'
-plot_file = 'obstacle.eps'
+simu_x_file = 'data/simu_obs2_x.txt'
+simu_y_file = 'data/simu_obs2_y.txt'
+real_x_file = 'data/real_obs2_x.txt'
+real_y_file = 'data/real_obs2_y.txt'
+plot_file = 'plots/obstacle.eps'
 
 def main():
     with open(simu_x_file, 'r') as f:

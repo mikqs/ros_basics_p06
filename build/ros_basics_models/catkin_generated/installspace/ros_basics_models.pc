@@ -1,0 +1,8 @@
+prefix=/home/student/ros_basics_ws/install
+
+Name: ros_basics_models
+Description: Description of ros_basics_models
+Version: 0.1.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

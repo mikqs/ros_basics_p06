@@ -17,11 +17,11 @@ from matplotlib.ticker import FormatStrFormatter
 import matplotlib.patches as patches
 import numpy as np
 
-simu_x_file = 'simu_pid_x.txt'
-simu_y_file = 'simu_pid_y.txt'
-real_x_file = 'real_pid_x.txt'
-real_y_file = 'real_pid_y.txt'
-plot_file = 'pid.eps'
+simu_x_file = 'data/simu_pid_x.txt'
+simu_y_file = 'data/simu_pid_y.txt'
+real_x_file = 'data/real_pid_x.txt'
+real_y_file = 'data/real_pid_y.txt'
+plot_file = 'plots/pid.eps'
 
 def main():
     with open(simu_x_file, 'r') as f:
