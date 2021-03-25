@@ -12,7 +12,6 @@ from sensor_msgs.msg import LaserScan
 import numpy as np
 from time import sleep
 
-#Kp_v = 1
 Kp_v = 0.3
 # Kp_w = 3
 Kp_w = 0.5
